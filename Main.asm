@@ -21,33 +21,10 @@ PROGRAM_START
 
         JSR PRINTS_HELLO
 
-        ; put a heart character in each corner
-        ; upper-left corner is green
-        lda #83
-        sta $0400
-        lda #5
-        sta $D800
-
-        ; upper-right corner is white
-        lda #83
-        sta $0427
-        lda #1
-        sta $D827
-
-        ; lower-left corner is violet
-        lda #83
-        sta $07c0
-        lda #4
-        sta $dbc0
-        
-        ; lower-right corner is light green
-        lda #83
-        sta $07e7
-        lda #13
-        sta $dbe7
+        JSR DRAWS_THE_HEARTS_IN_THE_CORNERS
 
 PROGRAM_END
-        rts
+        RTS
 
 HELLO_STRING
         text "hello"
@@ -64,7 +41,6 @@ CHANGE_BORDER_TO_RED
         STA $D020
         RTS
 
-
 SWAP_BACKGROUND_AND_TEXT_COLORS
         LDA $0286
         TAX
@@ -73,15 +49,38 @@ SWAP_BACKGROUND_AND_TEXT_COLORS
         STX $d021
         RTS
 
-
 PRINTS_HELLO
         LDA #<HELLO_STRING
         LDY #>HELLO_STRING
         JSR PRINTLINE
         RTS
 
+DRAWS_THE_HEARTS_IN_THE_CORNERS
+        ; upper-left corner is green
+        LDA #83
+        STA $0400
+        LDA #5
+        STA $D800
 
+        ; upper-right corner is white
+        LDA #83
+        STA $0427
+        LDA #1
+        STA $D827
 
+        ; lower-left corner is violet
+        LDA #83
+        STA $07c0
+        LDA #4
+        STA $dbc0
+        
+        ; lower-right corner is light green
+        LDA #83
+        STA $07e7
+        LDA #13
+        STA $dbe7
+
+        RTS
 
 
 
