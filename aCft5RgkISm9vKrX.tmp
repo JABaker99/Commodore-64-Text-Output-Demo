@@ -34,7 +34,6 @@ HELLO_STRING
 
 ; start writing your subroutines after this line
 
-
 ; Description: Changes the border to red
 ; Inputs: none
 ; Outputs: none
@@ -43,7 +42,7 @@ CHANGE_BORDER_TO_RED
         STA $D020
         RTS
 
-; Description: 
+; Description:
 ; Inputs: 
 ; Outputs: 
 SWAP_BACKGROUND_AND_TEXT_COLORS
@@ -69,15 +68,15 @@ PRINTS_HELLO
 DRAWS_THE_HEARTS_IN_THE_CORNERS
 
         JSR DRAWS_THE_UPPER_LEFT_CORNER
-
         JSR DRAWS_THE_UPPER_RIGHT_CORNER
-
         JSR DRAWS_THE_LOWER_LEFT_CORNER
-
         JSR DRAWS_THE_LOWER_RIGHT_CORNER
 
         RTS
 
+; Description: 
+; Inputs: 
+; Outputs: 
 DRAWS_THE_UPPER_LEFT_CORNER
         LDA #83
         STA $0400
@@ -85,6 +84,9 @@ DRAWS_THE_UPPER_LEFT_CORNER
         STA $D800
         RTS
 
+; Description: 
+; Inputs: 
+; Outputs: 
 DRAWS_THE_UPPER_RIGHT_CORNER
         LDA #83
         STA $0427
@@ -92,6 +94,9 @@ DRAWS_THE_UPPER_RIGHT_CORNER
         STA $D827
         RTS
 
+; Description: 
+; Inputs: 
+; Outputs: 
 DRAWS_THE_LOWER_LEFT_CORNER
         LDA #83
         STA $07c0
@@ -99,6 +104,9 @@ DRAWS_THE_LOWER_LEFT_CORNER
         STA $dbc0
         RTS
 
+; Description: 
+; Inputs: 
+; Outputs: 
 DRAWS_THE_LOWER_RIGHT_CORNER
         LDA #83
         STA $07e7

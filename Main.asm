@@ -40,9 +40,11 @@ CHANGE_BORDER_TO_RED
         STA $D020
         RTS
 
-; Description: 
+; Description: Swaps the current background and text colors.
 ; Inputs: 
-; Outputs: 
+;   - $0286: Current text color
+;   - $D021: Current background color
+; Outputs: none
 SWAP_BACKGROUND_AND_TEXT_COLORS
         LDA $0286
         TAX
@@ -51,33 +53,31 @@ SWAP_BACKGROUND_AND_TEXT_COLORS
         STX $d021
         RTS
 
-; Description: 
+; Description: Prints the "HELLO" string.
 ; Inputs: 
-; Outputs: 
+;   - HELLO_STRING: text string held at label HELLO_STRING.
+; Outputs: none
 PRINTS_HELLO
         LDA #<HELLO_STRING
         LDY #>HELLO_STRING
         JSR PRINTLINE
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Calls subroutines to draw four heart chars
+; Inputs: none
+; Outputs: none
 DRAWS_THE_HEARTS_IN_THE_CORNERS
 
         JSR DRAWS_THE_UPPER_LEFT_CORNER
-
         JSR DRAWS_THE_UPPER_RIGHT_CORNER
-
         JSR DRAWS_THE_LOWER_LEFT_CORNER
-
         JSR DRAWS_THE_LOWER_RIGHT_CORNER
 
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Places a heart in the top-left corner
+; Inputs: none
+; Outputs: none
 DRAWS_THE_UPPER_LEFT_CORNER
         LDA #83
         STA $0400
@@ -85,9 +85,9 @@ DRAWS_THE_UPPER_LEFT_CORNER
         STA $D800
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Places a heart in the top-right corner
+; Inputs: none
+; Outputs: none
 DRAWS_THE_UPPER_RIGHT_CORNER
         LDA #83
         STA $0427
@@ -95,9 +95,9 @@ DRAWS_THE_UPPER_RIGHT_CORNER
         STA $D827
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Places a heart in the bottom-left corner
+; Inputs: none
+; Outputs: none
 DRAWS_THE_LOWER_LEFT_CORNER
         LDA #83
         STA $07c0
@@ -105,9 +105,9 @@ DRAWS_THE_LOWER_LEFT_CORNER
         STA $dbc0
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Places a heart in the bottom-right corner
+; Inputs: none
+; Outputs: none
 DRAWS_THE_LOWER_RIGHT_CORNER
         LDA #83
         STA $07e7

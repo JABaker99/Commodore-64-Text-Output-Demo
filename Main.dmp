@@ -32,78 +32,86 @@
 00032  0824             
 00033  0824             ; START WRITING YOUR SUBROUTINES AFTER THIS LINE
 00034  0824             
-00035  0824             
-00036  0824             ; DESCRIPTION: CHANGES THE BORDER TO RED
-00037  0824             ; INPUTS: NONE
-00038  0824             ; OUTPUTS: NONE
-00039  0824             CHANGE_BORDER_TO_RED 
-00040  0824  A9 02                 LDA #2
-00041  0826  8D 20 D0              STA $D020
-00042  0829  60                    RTS
-00043  082A             
-00044  082A             ; DESCRIPTION:
-00045  082A             ; INPUTS:
-00046  082A             ; OUTPUTS:
-00047  082A             SWAP_BACKGROUND_AND_TEXT_COLORS 
-00048  082A  AD 86 02              LDA $0286
-00049  082D  AA                    TAX
-00050  082E  AD 21 D0              LDA $D021
-00051  0831  8D 86 02              STA $0286
-00052  0834  8E 21 D0              STX $D021
-00053  0837  60                    RTS
-00054  0838             
-00055  0838             ; DESCRIPTION:
-00056  0838             ; INPUTS:
-00057  0838             ; OUTPUTS:
-00058  0838             PRINTS_HELLO 
-00059  0838  A9 1D                 LDA #<HELLO_STRING
-00060  083A  A0 08                 LDY #>HELLO_STRING
-00061  083C  20 1E AB              JSR PRINTLINE
-00062  083F  60                    RTS
-00063  0840             
-00064  0840             ; DESCRIPTION:
-00065  0840             ; INPUTS:
-00066  0840             ; OUTPUTS:
-00067  0840             DRAWS_THE_HEARTS_IN_THE_CORNERS 
-00068  0840             
-00069  0840  20 4D 08              JSR DRAWS_THE_UPPER_LEFT_CORNER
-00070  0843             
-00071  0843  20 58 08              JSR DRAWS_THE_UPPER_RIGHT_CORNER
-00072  0846             
-00073  0846  20 63 08              JSR DRAWS_THE_LOWER_LEFT_CORNER
-00074  0849             
-00075  0849  20 6E 08              JSR DRAWS_THE_LOWER_RIGHT_CORNER
-00076  084C             
-00077  084C  60                    RTS
-00078  084D             
-00079  084D             DRAWS_THE_UPPER_LEFT_CORNER 
-00080  084D  A9 53                 LDA #83
-00081  084F  8D 00 04              STA $0400
-00082  0852  A9 05                 LDA #5
-00083  0854  8D 00 D8              STA $D800
-00084  0857  60                    RTS
-00085  0858             
-00086  0858             DRAWS_THE_UPPER_RIGHT_CORNER 
-00087  0858  A9 53                 LDA #83
-00088  085A  8D 27 04              STA $0427
-00089  085D  A9 01                 LDA #1
-00090  085F  8D 27 D8              STA $D827
-00091  0862  60                    RTS
-00092  0863             
-00093  0863             DRAWS_THE_LOWER_LEFT_CORNER 
-00094  0863  A9 53                 LDA #83
-00095  0865  8D C0 07              STA $07C0
-00096  0868  A9 04                 LDA #4
-00097  086A  8D C0 DB              STA $DBC0
-00098  086D  60                    RTS
-00099  086E             
-00100  086E             DRAWS_THE_LOWER_RIGHT_CORNER 
-00101  086E  A9 53                 LDA #83
-00102  0870  8D E7 07              STA $07E7
-00103  0873  A9 0D                 LDA #13
-00104  0875  8D E7 DB              STA $DBE7
-00105  0878  60                    RTS
-00106  0879             
+00035  0824             ; DESCRIPTION: CHANGES THE BORDER TO RED
+00036  0824             ; INPUTS: NONE
+00037  0824             ; OUTPUTS: NONE
+00038  0824             CHANGE_BORDER_TO_RED 
+00039  0824  A9 02                 LDA #2
+00040  0826  8D 20 D0              STA $D020
+00041  0829  60                    RTS
+00042  082A             
+00043  082A             ; DESCRIPTION:
+00044  082A             ; INPUTS:
+00045  082A             ; OUTPUTS:
+00046  082A             SWAP_BACKGROUND_AND_TEXT_COLORS 
+00047  082A  AD 86 02              LDA $0286
+00048  082D  AA                    TAX
+00049  082E  AD 21 D0              LDA $D021
+00050  0831  8D 86 02              STA $0286
+00051  0834  8E 21 D0              STX $D021
+00052  0837  60                    RTS
+00053  0838             
+00054  0838             ; DESCRIPTION:
+00055  0838             ; INPUTS:
+00056  0838             ; OUTPUTS:
+00057  0838             PRINTS_HELLO 
+00058  0838  A9 1D                 LDA #<HELLO_STRING
+00059  083A  A0 08                 LDY #>HELLO_STRING
+00060  083C  20 1E AB              JSR PRINTLINE
+00061  083F  60                    RTS
+00062  0840             
+00063  0840             ; DESCRIPTION:
+00064  0840             ; INPUTS:
+00065  0840             ; OUTPUTS:
+00066  0840             DRAWS_THE_HEARTS_IN_THE_CORNERS 
+00067  0840             
+00068  0840  20 4D 08              JSR DRAWS_THE_UPPER_LEFT_CORNER
+00069  0843  20 58 08              JSR DRAWS_THE_UPPER_RIGHT_CORNER
+00070  0846  20 63 08              JSR DRAWS_THE_LOWER_LEFT_CORNER
+00071  0849  20 6E 08              JSR DRAWS_THE_LOWER_RIGHT_CORNER
+00072  084C             
+00073  084C  60                    RTS
+00074  084D             
+00075  084D             ; DESCRIPTION:
+00076  084D             ; INPUTS:
+00077  084D             ; OUTPUTS:
+00078  084D             DRAWS_THE_UPPER_LEFT_CORNER 
+00079  084D  A9 53                 LDA #83
+00080  084F  8D 00 04              STA $0400
+00081  0852  A9 05                 LDA #5
+00082  0854  8D 00 D8              STA $D800
+00083  0857  60                    RTS
+00084  0858             
+00085  0858             ; DESCRIPTION:
+00086  0858             ; INPUTS:
+00087  0858             ; OUTPUTS:
+00088  0858             DRAWS_THE_UPPER_RIGHT_CORNER 
+00089  0858  A9 53                 LDA #83
+00090  085A  8D 27 04              STA $0427
+00091  085D  A9 01                 LDA #1
+00092  085F  8D 27 D8              STA $D827
+00093  0862  60                    RTS
+00094  0863             
+00095  0863             ; DESCRIPTION:
+00096  0863             ; INPUTS:
+00097  0863             ; OUTPUTS:
+00098  0863             DRAWS_THE_LOWER_LEFT_CORNER 
+00099  0863  A9 53                 LDA #83
+00100  0865  8D C0 07              STA $07C0
+00101  0868  A9 04                 LDA #4
+00102  086A  8D C0 DB              STA $DBC0
+00103  086D  60                    RTS
+00104  086E             
+00105  086E             ; DESCRIPTION:
+00106  086E             ; INPUTS:
+00107  086E             ; OUTPUTS:
+00108  086E             DRAWS_THE_LOWER_RIGHT_CORNER 
+00109  086E  A9 53                 LDA #83
+00110  0870  8D E7 07              STA $07E7
+00111  0873  A9 0D                 LDA #13
+00112  0875  8D E7 DB              STA $DBE7
+00113  0878  60                    RTS
+00114  0879             
 
 ******* 11 Label(s) *******
 CHANGE_BORDER_TO_RED = $0824 
