@@ -17,12 +17,7 @@ PROGRAM_START
 
         JSR CHANGE_BORDER_TO_RED
 
-        ; swap background and text colors
-        lda $0286 
-        tax 
-        lda $d021 
-        sta $0286 
-        stx $d021 
+        JSR SWAP_BACKGROUND_AND_TEXT_COLORS
 
         ; prints "HELLO"
         lda #<HELLO_STRING
@@ -73,6 +68,13 @@ CHANGE_BORDER_TO_RED
         RTS
 
 
+SWAP_BACKGROUND_AND_TEXT_COLORS
+        lda $0286
+        tax
+        lda $d021
+        sta $0286
+        stx $d021
+        RTS
 
 
 
