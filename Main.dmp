@@ -16,59 +16,83 @@
 00016  0810             PROGRAM_START 
 00017  0810             
 00018  0810                        ; CHANGE BORDER TO RED
-00019  0810  A9 02                 LDA #2
-00020  0812  8D 20 D0              STA $D020
-00021  0815             
-00022  0815                        ; SWAP BACKGROUND AND TEXT COLORS
-00023  0815  AD 86 02              LDA $0286
-00024  0818  AA                    TAX
-00025  0819  AD 21 D0              LDA $D021
-00026  081C  8D 86 02              STA $0286
-00027  081F  8E 21 D0              STX $D021
-00028  0822             
-00029  0822                        ; PRINTS "HELLO"
-00030  0822  A9 52                 LDA #<HELLO_STRING
-00031  0824  A0 08                 LDY #>HELLO_STRING
-00032  0826  20 1E AB              JSR PRINTLINE
-00033  0829             
-00034  0829                        ; PUT A HEART CHARACTER IN EACH CORNER
-00035  0829                        ; UPPER-LEFT CORNER IS GREEN
-00036  0829  A9 53                 LDA #83
-00037  082B  8D 00 04              STA $0400
-00038  082E  A9 05                 LDA #5
-00039  0830  8D 00 D8              STA $D800
-00040  0833             
-00041  0833                        ; UPPER-RIGHT CORNER IS WHITE
-00042  0833  A9 53                 LDA #83
-00043  0835  8D 27 04              STA $0427
-00044  0838  A9 01                 LDA #1
-00045  083A  8D 27 D8              STA $D827
-00046  083D             
-00047  083D                        ; LOWER-LEFT CORNER IS VIOLET
-00048  083D  A9 53                 LDA #83
-00049  083F  8D C0 07              STA $07C0
-00050  0842  A9 04                 LDA #4
-00051  0844  8D C0 DB              STA $DBC0
-00052  0847                        
-00053  0847                        ; LOWER-RIGHT CORNER IS LIGHT GREEN
-00054  0847  A9 53                 LDA #83
-00055  0849  8D E7 07              STA $07E7
-00056  084C  A9 0D                 LDA #13
-00057  084E  8D E7 DB              STA $DBE7
-00058  0851             
-00059  0851             PROGRAM_END 
-00060  0851  60                    RTS
-00061  0852             
-00062  0852             HELLO_STRING 
-00063  0852  48 45 4C              TEXT "HELLO"
-00064  0857  0D 00                 BYTE 13, 00
-00065  0859             
-00066  0859             ; START WRITING YOUR SUBROUTINES AFTER THIS LINE
-00067  0859             
+00019  0810  20 57 08              JSR CHANGE_BORDER_TO_RED
+00020  0813             
+00021  0813                        ; SWAP BACKGROUND AND TEXT COLORS
+00022  0813  AD 86 02              LDA $0286
+00023  0816  AA                    TAX
+00024  0817  AD 21 D0              LDA $D021
+00025  081A  8D 86 02              STA $0286
+00026  081D  8E 21 D0              STX $D021
+00027  0820             
+00028  0820                        ; PRINTS "HELLO"
+00029  0820  A9 50                 LDA #<HELLO_STRING
+00030  0822  A0 08                 LDY #>HELLO_STRING
+00031  0824  20 1E AB              JSR PRINTLINE
+00032  0827             
+00033  0827                        ; PUT A HEART CHARACTER IN EACH CORNER
+00034  0827                        ; UPPER-LEFT CORNER IS GREEN
+00035  0827  A9 53                 LDA #83
+00036  0829  8D 00 04              STA $0400
+00037  082C  A9 05                 LDA #5
+00038  082E  8D 00 D8              STA $D800
+00039  0831             
+00040  0831                        ; UPPER-RIGHT CORNER IS WHITE
+00041  0831  A9 53                 LDA #83
+00042  0833  8D 27 04              STA $0427
+00043  0836  A9 01                 LDA #1
+00044  0838  8D 27 D8              STA $D827
+00045  083B             
+00046  083B                        ; LOWER-LEFT CORNER IS VIOLET
+00047  083B  A9 53                 LDA #83
+00048  083D  8D C0 07              STA $07C0
+00049  0840  A9 04                 LDA #4
+00050  0842  8D C0 DB              STA $DBC0
+00051  0845                        
+00052  0845                        ; LOWER-RIGHT CORNER IS LIGHT GREEN
+00053  0845  A9 53                 LDA #83
+00054  0847  8D E7 07              STA $07E7
+00055  084A  A9 0D                 LDA #13
+00056  084C  8D E7 DB              STA $DBE7
+00057  084F             
+00058  084F             PROGRAM_END 
+00059  084F  60                    RTS
+00060  0850             
+00061  0850             HELLO_STRING 
+00062  0850  48 45 4C              TEXT "HELLO"
+00063  0855  0D 00                 BYTE 13, 00
+00064  0857             
+00065  0857             ; START WRITING YOUR SUBROUTINES AFTER THIS LINE
+00066  0857             
+00067  0857             
+00068  0857             ; CHANGES THE BORDER TO RED
+00069  0857             ; INPUTS: NONE
+00070  0857             ; OUTPUTS: NONE
+00071  0857             CHANGE_BORDER_TO_RED 
+00072  0857  A9 02                 LDA #2
+00073  0859  8D 20 D0              STA $D020
+00074  085C  60                    RTS
+00075  085D             
+00076  085D             
+00077  085D             
+00078  085D             
+00079  085D             
+00080  085D             
+00081  085D             
+00082  085D             
+00083  085D             
+00084  085D             
+00085  085D             
+00086  085D             
+00087  085D             
+00088  085D             
+00089  085D             
+00090  085D             
 
-******* 3 Label(s) *******
-HELLO_STRING = $0852 
-PROGRAM_END = $0851 
+******* 4 Label(s) *******
+CHANGE_BORDER_TO_RED = $0857 
+HELLO_STRING = $0850 
+PROGRAM_END = $084F 
 PROGRAM_START = $0810 
 
 ******* 2 Unused label(s) *******

@@ -15,9 +15,7 @@ PRINTLINE=$AB1E
 *=$0810
 PROGRAM_START
 
-        ; change border to red
-        lda #2
-        sta $D020
+        JSR CHANGE_BORDER_TO_RED
 
         ; swap background and text colors
         lda $0286 
@@ -64,3 +62,27 @@ HELLO_STRING
         byte 13, 00
 
 ; start writing your subroutines after this line
+
+
+; Changes the border to red
+; Inputs: none
+; Outputs: none
+CHANGE_BORDER_TO_RED
+        LDA #2
+        STA $D020
+        RTS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
