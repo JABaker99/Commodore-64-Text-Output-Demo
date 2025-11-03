@@ -19,10 +19,7 @@ PROGRAM_START
 
         JSR SWAP_BACKGROUND_AND_TEXT_COLORS
 
-        ; prints "HELLO"
-        lda #<HELLO_STRING
-        ldy #>HELLO_STRING
-        jsr PRINTLINE
+        JSR PRINTS_HELLO
 
         ; put a heart character in each corner
         ; upper-left corner is green
@@ -69,16 +66,19 @@ CHANGE_BORDER_TO_RED
 
 
 SWAP_BACKGROUND_AND_TEXT_COLORS
-        lda $0286
-        tax
-        lda $d021
-        sta $0286
-        stx $d021
+        LDA $0286
+        TAX
+        LDA $d021
+        STA $0286
+        STX $d021
         RTS
 
 
-
-
+PRINTS_HELLO
+        LDA #<HELLO_STRING
+        LDY #>HELLO_STRING
+        JSR PRINTLINE
+        RTS
 
 
 
