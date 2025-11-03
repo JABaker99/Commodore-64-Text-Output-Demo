@@ -32,8 +32,7 @@ HELLO_STRING
 
 ; start writing your subroutines after this line
 
-
-; Changes the border to red
+; Description: Changes the border to red
 ; Inputs: none
 ; Outputs: none
 CHANGE_BORDER_TO_RED
@@ -41,6 +40,9 @@ CHANGE_BORDER_TO_RED
         STA $D020
         RTS
 
+; Description: 
+; Inputs: 
+; Outputs: 
 SWAP_BACKGROUND_AND_TEXT_COLORS
         LDA $0286
         TAX
@@ -49,41 +51,66 @@ SWAP_BACKGROUND_AND_TEXT_COLORS
         STX $d021
         RTS
 
+; Description: 
+; Inputs: 
+; Outputs: 
 PRINTS_HELLO
         LDA #<HELLO_STRING
         LDY #>HELLO_STRING
         JSR PRINTLINE
         RTS
 
+; Description: 
+; Inputs: 
+; Outputs: 
 DRAWS_THE_HEARTS_IN_THE_CORNERS
-        ; upper-left corner is green
+
+        JSR DRAWS_THE_UPPER_LEFT_CORNER
+
+        JSR DRAWS_THE_UPPER_RIGHT_CORNER
+
+        JSR DRAWS_THE_LOWER_LEFT_CORNER
+
+        JSR DRAWS_THE_LOWER_RIGHT_CORNER
+
+        RTS
+
+; Description: 
+; Inputs: 
+; Outputs: 
+DRAWS_THE_UPPER_LEFT_CORNER
         LDA #83
         STA $0400
         LDA #5
         STA $D800
+        RTS
 
-        ; upper-right corner is white
+; Description: 
+; Inputs: 
+; Outputs: 
+DRAWS_THE_UPPER_RIGHT_CORNER
         LDA #83
         STA $0427
         LDA #1
         STA $D827
+        RTS
 
-        ; lower-left corner is violet
+; Description: 
+; Inputs: 
+; Outputs: 
+DRAWS_THE_LOWER_LEFT_CORNER
         LDA #83
         STA $07c0
         LDA #4
         STA $dbc0
-        
-        ; lower-right corner is light green
+        RTS
+
+; Description: 
+; Inputs: 
+; Outputs: 
+DRAWS_THE_LOWER_RIGHT_CORNER
         LDA #83
         STA $07e7
         LDA #13
         STA $dbe7
-
         RTS
-
-
-
-
-
-
