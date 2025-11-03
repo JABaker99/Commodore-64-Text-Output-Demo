@@ -14,8 +14,10 @@ PRINTLINE=$AB1E
 ; program entrance
 *=$0810
 PROGRAM_START
+        ; color value to add into the accumulator
+        LDA #2
 
-        JSR CHANGE_BORDER_TO_RED
+        JSR CHANGE_BORDER_TO_ACCUMULATOR
 
         JSR SWAP_BACKGROUND_AND_TEXT_COLORS
 
@@ -32,11 +34,11 @@ HELLO_STRING
 
 ; start writing your subroutines after this line
 
-; Description: Changes the border to red
-; Inputs: none
-; Outputs: none
-CHANGE_BORDER_TO_RED
-        LDA #2
+; Description: Sets the screen border color to the value provided in the accumulator.
+; Inputs: 
+;   A - Color value
+; Outputs: color register ($D020) is updated with the value stored in A.
+CHANGE_BORDER_TO_ACCUMULATOR
         STA $D020
         RTS
 

@@ -16,8 +16,10 @@ PRINTLINE=$AB1E
 ; program entrance
 *=$0810
 PROGRAM_START
+        ; color value to add into the accumulator
+        LDA #2
 
-        JSR CHANGE_BORDER_TO_RED
+        JSR CHANGE_BORDER_TO_ACCUMULATOR
 
         JSR SWAP_BACKGROUND_AND_TEXT_COLORS
 
@@ -34,17 +36,19 @@ HELLO_STRING
 
 ; start writing your subroutines after this line
 
-; Description: Changes the border to red
-; Inputs: none
-; Outputs: none
-CHANGE_BORDER_TO_RED
-        LDA #2
+; Description: Sets the screen border color to the value provided in the accumulator.
+; Inputs: 
+;   A - Color value
+; Outputs: color register ($D020) is updated with the value stored in A.
+CHANGE_BORDER_TO_ACCUMULATOR
         STA $D020
         RTS
 
-; Description:
+; Description: Swaps the current background and text colors.
 ; Inputs: 
-; Outputs: 
+;   - $0286: Current text color
+;   - $D021: Current background color
+; Outputs: none
 SWAP_BACKGROUND_AND_TEXT_COLORS
         LDA $0286
         TAX
@@ -53,18 +57,19 @@ SWAP_BACKGROUND_AND_TEXT_COLORS
         STX $d021
         RTS
 
-; Description: 
+; Description: Prints the "HELLO" string.
 ; Inputs: 
-; Outputs: 
+;   - HELLO_STRING: text string held at label HELLO_STRING.
+; Outputs: none
 PRINTS_HELLO
         LDA #<HELLO_STRING
         LDY #>HELLO_STRING
         JSR PRINTLINE
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Calls subroutines to draw four heart chars
+; Inputs: none
+; Outputs: none
 DRAWS_THE_HEARTS_IN_THE_CORNERS
 
         JSR DRAWS_THE_UPPER_LEFT_CORNER
@@ -74,9 +79,9 @@ DRAWS_THE_HEARTS_IN_THE_CORNERS
 
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Places a heart in the top-left corner
+; Inputs: none
+; Outputs: none
 DRAWS_THE_UPPER_LEFT_CORNER
         LDA #83
         STA $0400
@@ -84,9 +89,9 @@ DRAWS_THE_UPPER_LEFT_CORNER
         STA $D800
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Places a heart in the top-right corner
+; Inputs: none
+; Outputs: none
 DRAWS_THE_UPPER_RIGHT_CORNER
         LDA #83
         STA $0427
@@ -94,9 +99,9 @@ DRAWS_THE_UPPER_RIGHT_CORNER
         STA $D827
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Places a heart in the bottom-left corner
+; Inputs: none
+; Outputs: none
 DRAWS_THE_LOWER_LEFT_CORNER
         LDA #83
         STA $07c0
@@ -104,9 +109,9 @@ DRAWS_THE_LOWER_LEFT_CORNER
         STA $dbc0
         RTS
 
-; Description: 
-; Inputs: 
-; Outputs: 
+; Description: Places a heart in the bottom-right corner
+; Inputs: none
+; Outputs: none
 DRAWS_THE_LOWER_RIGHT_CORNER
         LDA #83
         STA $07e7
